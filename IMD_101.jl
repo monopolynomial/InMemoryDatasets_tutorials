@@ -17,3 +17,19 @@ data=Dataset(x=[1,2,3],y=["1,2","10,10","1,2,3,4"])
 f(x)=parse.(Int,split(x,","))
 setformat!(data,:y=>f)
 flatten!(data,:y,mapformats=true)
+
+# simulate data-do fun stuff :D
+data=Dataset(rand(1:10, 1000, 3),[:group,:x,:y])
+map!(data,x->rand()<0.1 ? missing : x,[:x,:y])
+filter(data,[:x,:y],by=ismissing)
+filter(data,[:x,:y],by=ismissing,type=any)
+filter(data,[:x,:y],type=isequal)
+# replace missing in [:x,:y] for only group==1 with 0
+using Chain
+@chain data begin
+  filter(:group,by= ==(1),view=true)
+  map!(x->ismissing(x) ? 0 : x,[:x,:y])
+  parent
+end
+#check
+combine(groupby(data,:group),[:x,:y]=>IMD.nmissing)
