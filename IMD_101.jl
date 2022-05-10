@@ -3,6 +3,11 @@ data=Dataset(x1=[1,2,3],x2=[4,5,6])
 
 # sort!
 sort!(data,:x1)
+sort!(data,[:x2,:x1],rev=[true,false])
+
+#view and sort
+view(data,sortperm(data,:x1),:)
+groupby(data,:x1)
 
 # modify!
 modify!(data,:x1=>byrow(sqrt)=>:y)
