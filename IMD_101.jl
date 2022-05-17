@@ -8,6 +8,7 @@ sort!(data,[:x2,:x1],rev=[true,false])
 #view and sort
 view(data,sortperm(data,:x1),:)
 groupby(data,:x1)
+gatherby(data,:x1)
 
 # modify!
 modify!(data,:x1=>byrow(sqrt)=>:y)
