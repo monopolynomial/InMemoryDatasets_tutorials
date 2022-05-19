@@ -1,5 +1,5 @@
 using InMemoryDatasets
-data=Dataset(x1=[1,2,3],x2=[4,5,6])
+data=Dataset(x1=[1,2,1],x2=[4,5,6])
 
 # sort!
 sort!(data,:x1)
@@ -12,6 +12,7 @@ gatherby(data,:x1)
 
 # modify!
 modify!(data,:x1=>byrow(sqrt)=>:y)
+modify!(groupby(data,:x1),:x2=>IMD.sum=>:x3)
 
 # combine
 data=Dataset(group=[2,1,1,2,2,3],y=rand(6))
