@@ -40,3 +40,6 @@ using Chain
 end
 #check
 combine(groupby(data,:group),[:x,:y]=>IMD.nmissing)
+
+#keep random occurance of duplicates / cool!
+unique(data,:group,keep=:random)
