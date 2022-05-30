@@ -43,3 +43,5 @@ combine(groupby(data,:group),[:x,:y]=>IMD.nmissing)
 
 #keep random occurance of duplicates / cool!
 unique(data,:group,keep=:random)
+#other forms
+unique(data,:group,keep=:none)
