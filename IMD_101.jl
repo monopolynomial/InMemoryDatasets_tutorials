@@ -45,3 +45,6 @@ combine(groupby(data,:group),[:x,:y]=>IMD.nmissing)
 unique(data,:group,keep=:random)
 #other forms
 unique(data,:group,keep=:none)
+
+#repeat function - just found about its power
+repeat(data,freq=:y)
