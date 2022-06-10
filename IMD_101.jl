@@ -37,6 +37,10 @@ byrow(data,findfirst,[:x,:y],by= ==(1))
 filter(data,[:x,:y],by=ismissing)
 filter(data,[:x,:y],by=ismissing,type=any)
 filter(data,[:x,:y],type=isequal)
+
+#delete is deletes true rows/it's anew feature
+delete(data,[:x,:y],by=ismissing)
+
 # replace missing in [:x,:y] for only group==1 with 0
 using Chain
 @chain data begin
