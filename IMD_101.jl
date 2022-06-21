@@ -58,3 +58,7 @@ unique(data,:group,keep=:none)
 
 #repeat function - just found about its power
 repeat(data,freq=:y)
+
+dsr=Dataset(id=[1,2],x=[-100,100])
+dsl=Dataset(id=[1,1,2,1])
+leftjoin(dsl,dsr,on=:id,obs_id=true,multiple_match=true)
