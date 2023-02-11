@@ -29,6 +29,9 @@ flatten!(data,:y,mapformats=true)
 data=Dataset(rand(1:10, 1000, 3),[:group,:x,:y])
 map!(data,x->rand()<0.1 ? missing : x,[:x,:y])
 
+# reshape
+transpose(groupby(data,:group),[:x,:y])
+
 #byrow calculations
 byrow(data,sum,[:x,:y])
 byrow(data,findfirst,[:x,:y],by= ==(1))
